@@ -6,9 +6,6 @@ import "./css/draw.css";
 
 const { Option } = Select;
 
-let activeShapePoints = [];
-let activeShape;
-let floatingPoint;
 //初始化绘制模式为线
 let drawingMode = "line";
 
@@ -72,10 +69,11 @@ class DrawFeatureLayer extends Component {
     this.draw = drawObj.draw;
     this.draw.setDefSceneConfig();
     this.draw.setBloomLightScene();
-    this.flyTo();
+    // this.flyTo();
     this.StraightArrowObj = drawObj.straightArrowObj;
     this.AttackArrowObj = drawObj.attackArrowObj;
     this.PincerArrowObj = drawObj.pincerArrowObj;
+    this.load3dTiles(drawObj.viewer);
   };
   flyTo() {
     this.draw.setView({
@@ -87,7 +85,32 @@ class DrawFeatureLayer extends Component {
       },
     });
   }
+  async load3dTiles(viewer) {
+    viewer.scene.sun.show = false;
+    viewer.scene.moon.show = false;
+    viewer.scene.skyAtmosphere.show = false;
+    const tilesetObj = await Cesium.Cesium3DTileset.fromUrl("static/data/3DTiles/building/tileset.json");
 
+    var tilesets = viewer.scene.primitives.add(tilesetObj);
+
+    tilesets.readyPromise.then(function (tileset) {
+      tileset.style = new Cesium.Cesium3DTileStyle({
+        color: {
+          conditions: [
+            ["${height} >= 300", "rgba(0, 149, 251, 0.3)"],
+            ["${height} >= 200", "rgb(0, 149, 251, 0.3)"],
+            ["${height} >= 100", "rgb(0, 149, 251, 0.3)"],
+            ["${height} >= 50", "rgb(0, 149, 251, 0.3)"],
+            ["${height} >= 25", "rgb(0, 149, 251, 0.3)"],
+            ["${height} >= 10", "rgb(0, 149, 251, 0.3)"],
+            ["${height} >= 5", "rgb(0, 149, 251, 0.3)"],
+            ["true", "rgb(0, 149, 251, 0.3)"],
+          ],
+        },
+      });
+      viewer.flyTo(tileset);
+    });
+  }
   drawShape() {
     if (drawingMode === "cylinder") {
       this.draw.drawCylinderGraphics({ topRadius: 1 });
@@ -111,11 +134,16 @@ class DrawFeatureLayer extends Component {
   }
 
   stopShape = () => {
+    this.destroyDraw(); // 清除操作
+    this.drawShape(); //绘制最终图
+  };
+
+  destroyDraw() {
     this.PincerArrowObj.disable();
     this.StraightArrowObj.disable();
     this.AttackArrowObj.disable();
-    this.drawShape(activeShapePoints); //绘制最终图
-  };
+    this.draw.removeEventHandler();
+  }
 
   handleChange = (value) => {
     //切换绘制模式
@@ -131,10 +159,7 @@ class DrawFeatureLayer extends Component {
 
   componentWillUnmount() {
     if (this.viewer) {
-      floatingPoint = undefined;
-      activeShape = undefined;
-      activeShapePoints = [];
-      this.viewer.entities.removeAll();
+      this.destroyDraw();
     }
   }
 

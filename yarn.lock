@@ -4356,10 +4356,10 @@ cesium@~1.105.0:
     "@cesium/engine" "2.4.0"
     "@cesium/widgets" "2.3.0"
 
-cesium_dev_kit@^1.0.77:
-  version "1.0.77"
-  resolved "https://registry.npmjs.org/cesium_dev_kit/-/cesium_dev_kit-1.0.77.tgz#77410ed671195c1faea5ef45686471260d94509a"
-  integrity sha512-60QMdTIwZ+vGVGQvWC5fO4wF7CpX6tcuy5xiczpTfErHPNoxLDBpfJHlSHzv96wNmjWG2IMGjYz2YitnXaWKYQ==
+cesium_dev_kit@^1.0.79:
+  version "1.0.79"
+  resolved "https://registry.npmjs.org/cesium_dev_kit/-/cesium_dev_kit-1.0.79.tgz#b51d5d76b434c6b017306913cca06103d7b1a5fa"
+  integrity sha512-v9JHJmQPf6NtGVTj+RQCPBsri9E6BRK05OEDI3ZVxLx+tRxlH3ofSu5KSaAXGRP+n2O21HnLr7t7iLBvUGseQQ==
   dependencies:
     "@turf/turf" "^6.5.0"
     concaveman "^1.1.1"

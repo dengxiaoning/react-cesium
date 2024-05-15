@@ -536,23 +536,21 @@ module.exports = function (webpackEnv) {
           from: path.join(cesiumSource, cesiumWorkers),
           to: "Workers",
         },
-      ]),
-      new CopyWebpackPlugin([
         {
           from: path.join(cesiumSource, "Assets"),
           to: "Assets",
         },
-      ]),
-      new CopyWebpackPlugin([
         {
           from: path.join(cesiumSource, "Widgets"),
           to: "Widgets",
         },
+        {
+          // cesiuim环境变量
+          from: path.join(fileFolder, "static"),
+          to: "static",
+        },
       ]),
 
-      new CopyWebpackPlugin([{ from: path.join(fileFolder, "data"), to: "Data" }]),
-
-      // cesiuim环境变量
       new webpack.DefinePlugin({
         CESIUM_BASE_URL: JSON.stringify(""),
       }),
