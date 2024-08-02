@@ -1,29 +1,54 @@
 # react-cesium
 
-Case project using cesium_dev_kit in react
+使用最新 react@18.3.1、webpack@5.64.4、redux@5.0.1、react-router-dom@6.25.1搭建一个 react 的后台管理系统，
+整合cesium@1.119.0、three@0.167.0 三维框架，引入cesium_dev_kit@1.0.91开发工具包，编写案例测试所以功能
+
+# Preview
+
+![material](src/static/react-cesium.gif)
 
 # install dependencies
 
 ```
+npm i
+// OR
  yarn
+
+```
+
+如果 npm 安装过慢建议使用淘宝镜像
+
+```
+npm config get registry
+
+# 设置为淘宝镜像
+npm config set registry https://registry.npmmirror.com
+
+# 设置为官方镜像
+npm config set registry https://registry.npmjs.org
 ```
 
 # test
 
 ```
+npm run test
+//OR
  yarn run test
 ```
 
 # dev
 
 ```
+npm start
+// OR
  yarn run start
 ```
 
 # build
 
 ```
-
+npm run build
+//OR
 yarn run build
 
 ```
@@ -31,7 +56,7 @@ yarn run build
 # Preview Address
 
 ```
-http://localhost:3000
+http://localhost:9527
 
 ```
 
@@ -43,7 +68,7 @@ http://localhost:3000
 
 ```
   "engines": {
-    "node": ">=16.5.0",
+    "node": ">=18.17.0",
     "npm": ">=8.19.4",
     "yarn":">=1.22.19"
   }
