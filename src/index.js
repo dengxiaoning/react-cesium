@@ -25,7 +25,8 @@ const hashHistory = createHashHistory();
 
 const routes = (
   <Provider store={store}>
-    <Router location={hashHistory.location} navigator={hashHistory}>
+    <Router basename={process.env.PUBLIC_URL}
+      location={hashHistory.location} navigator={hashHistory}>
       <Routes>
         <Route path="/" element={<App />}  >
         <Route index element={<Navigate to="/tools/draw" replace />} />

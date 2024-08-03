@@ -29,8 +29,7 @@ export type PickIconPropsOf<K extends IconNames> = PickProps<
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
-    '//at.alicdn.com/t/c/font_4641784_o3jmbyfnqc.js',
-    'static/font/iconfont.js'
+    `${process.env.PUBLIC_URL}/static/font/iconfont.js`
   ],
 });
 

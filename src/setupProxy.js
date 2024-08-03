@@ -1,109 +1,109 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const originUrl ='http://192.168.1.64:9527' 
-
+const originUrl ='http://192.168.1.64:9527/reactCesium'
 /**
  * 路由代理
  * 注意是从长路由到短路由
  * 如：/tools/draw 再是/tools
- * @param {*} app 
+ * 注：nginx反之
+ * @param {object} app 
  */
 module.exports = function (app) {
-  app.use( '/tools/draw',
+  app.use( '/reactCesium/tools/draw',
     createProxyMiddleware({
       target:originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/tools/draw': '', // 重写路径
+        '^/reactCesium/tools/draw': '', // 重写路径
       },
     })
   );
-  app.use( '/tools/analysis',
+  app.use('/reactCesium/tools/analysis',
     createProxyMiddleware({
       target: originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/tools/analysis': '', // 重写路径
+        '^/reactCesium/tools/analysis': '', // 重写路径
       },
     })
   );
-  app.use( '/tools',
+  app.use('/reactCesium/tools',
     createProxyMiddleware({
       target:originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/tools': '', // 重写路径
+        '^/reactCesium/tools': '', // 重写路径
       },
     })
   );
-  app.use('/fanShapeScan',
+  app.use('/reactCesium/fanShapeScan',
     createProxyMiddleware( {
         target:originUrl,
         changeOrigin: true,
         pathRewrite: {
-          '^/fanShapeScan': '', // 重写路径
+          '^/reactCesium/fanShapeScan': '', // 重写路径
         },
     })
   );
-  app.use('/material/linkPointFlow',
+  app.use('/reactCesium/material/linkPointFlow',
     createProxyMiddleware( {
         target:originUrl,
         changeOrigin: true,
         pathRewrite: {
-          '^/sensor/linkPointFlow': '', // 重写路径
+          '^/reactCesium/material/linkPointFlow': '', // 重写路径
         },
     })
   );
-  app.use('/material',
+  app.use('/reactCesium/material',
       createProxyMiddleware( {
           target: originUrl,
           changeOrigin: true,
           pathRewrite: {
-            '^/material': '', // 重写路径
+            '^/reactCesium/material': '', // 重写路径
           },
       })
     );
-  app.use('/modelExample/postProcessStages',
+  app.use('/reactCesium/modelExample/postProcessStages',
     createProxyMiddleware( {
         target: originUrl,
         changeOrigin: true,
         pathRewrite: {
-          '^/modelExample/postProcessStages': '', // 重写路径
+          '^/reactCesium/modelExample/postProcessStages': '', // 重写路径
         },
     })
   );
-  app.use('/modelExample/threeCesium/aniSoldier',
+  app.use('/reactCesium/modelExample/threeCesium/aniSoldier',
     createProxyMiddleware({
       target: originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/modelExample/threeCesium/aniSoldier': '', // 重写路径
+        '^/reactCesium/modelExample/threeCesium/aniSoldier': '', // 重写路径
       },
     })
   );
-  app.use('/modelExample/threeCesium/rayCast',
+  app.use('/reactCesium/modelExample/threeCesium/rayCast',
     createProxyMiddleware({
       target: originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/modelExample/threeCesium/rayCast': '', // 重写路径
+        '^/reactCesium/modelExample/threeCesium/rayCast': '', // 重写路径
       },
     })
   );
-  app.use('/modelExample/threeCesium',
+  app.use('/reactCesium/modelExample/threeCesium',
   createProxyMiddleware({
     target:originUrl,
     changeOrigin: true,
     pathRewrite: {
-      '^/modelExample/threeCesium': '', // 重写路径
+      '^/reactCesium/modelExample/threeCesium': '', // 重写路径
     },
   })
 );
-  app.use('/modelExample',
+  app.use('/reactCesium/modelExample',
     createProxyMiddleware({
       target: originUrl,
       changeOrigin: true,
       pathRewrite: {
-        '^/modelExample': '', // 重写路径
+        '^/reactCesium/modelExample': '', // 重写路径
       },
     })
   );

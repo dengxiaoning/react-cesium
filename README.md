@@ -5,7 +5,12 @@
 
 # Preview
 
-![material](src/static/react-cesium.gif)
+[在线地址 https://benpaodehenji.com/reactCesium/](https://benpaodehenji.com/reactCesium/)
+
+- 登录
+  ![material](src/static/login.png)
+- 功能预览
+  ![material](src/static/react-cesium.gif)
 
 # install dependencies
 
@@ -44,19 +49,14 @@ npm start
  yarn run start
 ```
 
+**注意：setupProxy.js 中 const originUrl ='http://\*\*\*\*:9527/reactCesium' 需要改成自己本机的 ip 地址**
+
 # build
 
 ```
 npm run build
 //OR
 yarn run build
-
-```
-
-# Preview Address
-
-```
-http://localhost:9527
 
 ```
 

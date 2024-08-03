@@ -1,7 +1,7 @@
 {
   "name": "react-cesium",
   "version": "0.1.1",
-  "homepage": "./",
+  "homepage": "/reactCesium/",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "4.4.0",
