@@ -80,7 +80,7 @@ class DrawFeatureLayer extends PureComponent {
     } else if (drawingMode === "line") {
       this.draw.drawLineGraphics();
     } else if (drawingMode === "polygon") {
-      this.draw.drawPolygonGraphics({ height: 1800 });
+      this.draw.drawPolygonGraphics({ height: 200 });
     } else if (drawingMode === "circle") {
       this.draw.drawCircleGraphics();
     } else if (drawingMode === "rectangle") {

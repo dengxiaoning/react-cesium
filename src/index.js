@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router,Routes, Route,Navigate} from 'react-router-dom'
 import { createHashHistory } from 'history';
+
 
 import './utils/index.js';  // 引入各种prototype辅助方法
 import store from './redux/store.js';  // redux store
@@ -29,7 +30,7 @@ const routes = (
       location={hashHistory.location} navigator={hashHistory}>
       <Routes>
         <Route path="/" element={<App />}  >
-        <Route index element={<Navigate to="/tools/draw" replace />} />
+          <Route index element={<Navigate to="/tools/draw" replace />} />
           <Route path="fanShapeScan" element={<FanShapeScan/>}/>
           <Route path="tools" >
             <Route index path="draw"  element={<DrawPlotObj />} />
@@ -53,7 +54,5 @@ const routes = (
 );
 
 
-
-// ReactDOM.render(routes, document.getElementById('root'));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(routes);

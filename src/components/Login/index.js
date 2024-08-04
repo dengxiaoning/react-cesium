@@ -9,7 +9,7 @@ import './index.scss';
 import {loginSuccessCreator} from '../../redux/Login.js';
 
 const logger = Logger.getLogger('Login');
-
+const logGithub = `${process.env.PUBLIC_URL}/static/data/images/file/github.png`
 /**
  * 定义Login组件
  */
@@ -74,7 +74,7 @@ class Login extends React.PureComponent {
         {globalConfig.debug &&
         <a href="https://github.com/dengxiaoning/react-cesium">
           <img style={{position: 'absolute', top: 8, right: 8, border: 0,width:'35px',height:'35px'}}
-               src="static/data/images/file/github.png"
+               src={logGithub}
                alt="GitHub"
           />
         </a>}
